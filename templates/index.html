@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Invoice Converter</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            background: #f5f7fa;
+            color: #333
+        }
+
+        .card {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .1)
+        }
+
+        h1 {
+            text-align: center
+        }
+
+        input[type=file] {
+            margin: 20px 0
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer
+        }
+
+        button:disabled {
+            background: #b3d4ff
+        }
+
+        .spin {
+            display: none;
+            margin-top: 20px;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Invoice Converter</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" id="form">
+            <label>Selecciona tu Excel (.xlsx, .xls, .csv):</label><br>
+            <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+            <button type="submit" id="btn">Generar facturas</button>
+        </form>
+        <div class="spin" id="spin">Generando…</div>
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+        const spin = document.getElementById('spin');
+        form.addEventListener('submit', () => {
+            document.getElementById('btn').disabled = true;
+            spin.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
